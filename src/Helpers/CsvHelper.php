@@ -7,7 +7,7 @@ class CsvHelper
     public static function parseCsv(string $csvContent): array
     {
         $rows = explode("\n", trim($csvContent));
-        $header = str_getcsv(array_shift($rows), ';'); // Extrae encabezado
+        $header = str_getcsv(array_shift($rows), ';');
 
         $data = [];
         foreach ($rows as $index => $row) {
@@ -24,7 +24,7 @@ class CsvHelper
     {
         $total = count($data);
         $pages = max(1, ceil($total / $limit));
-        $page = max(1, min($page, $pages)); // Asegurar que la página esté dentro del rango válido
+        $page = max(1, min($page, $pages));
 
         return [
             'data' => array_slice($data, ($page - 1) * $limit, $limit),
